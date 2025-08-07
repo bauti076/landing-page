@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>landing page</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: rgb(222, 224, 107);">
+    <div class="imagen">
+    <img src="banner.png" alt="">
+    </div>
+    <br>
+    <div class="container">
+        <h1 id="mensaje">NUEVOS BOTINES</h1>
+        <div class="countdown">
+            <div>
+                <span id="dias">5</span>
+                <p id="dias">dias</p>
+            </div>
+             <div>
+                <span id="horas">23</span>
+                <p id="horas">horas</p>
+            </div>
+             <div>
+                <span id="minutos">56</span>
+                <p id="minutos">minutos</p>
+            </div>
+             <div>
+                <span id="segundos">38</span>
+                <p id="segundos">segundos</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function actualizarcountown(){
+           const fechaactual = new Date();
+           const nuevoaño = fechaactual.getFullYear();
+         const final = new Date(`August 5, ${nuevoaño} 21:00:00`);
+
+          const difereccia = final-fechaactual;
+
+          if (difereccia < 0) {
+            clearInterval(intervalo);
+            document.querySelector('.countdown').innerHTML="<h1>¡LOS NUEVOS PRODUCTOS YA ESTÁN DISPONIBLES!</h1>";
+            
+            
+        }
+
+        const days = Math.floor(difereccia / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difereccia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difereccia % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difereccia % (1000 * 60)) / 1000);
+
+        document.getElementById('dias').textContent = days;
+        document.getElementById('horas').textContent = hours;
+        document.getElementById('minutos').textContent = minutes;
+        document.getElementById('segundos').textContent = seconds;
+
+        }
+        const intervalo = setInterval(actualizarcountown, 1000);
+        actualizarcountown();
+
+
+
+    </script>
+     
+   <div class="recurrentes">
+    <section class="faq" id="faq">
+    <h1 id="Preguntas">Preguntas Frecuentes </h1>
+    <div class="faq-item">
+        <button class="faq-question"><h3>¿cuando ingresan los nuevos articulos?</h3>
+            <i class="fas fa-chevron-down arrow"></i> <!-- Ícono de Font Awesome -->
+        </button>
+        <div class="faq-answer">
+            <p>Los nuevos articulos entran a la venta el 10 de agosto y estarán disponibles por tiempo limitado.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question"><h3>¿Hacen envíos a todo el país?</h3>
+            <i class="fas fa-chevron-down arrow"></i>
+        </button>
+        <div class="faq-answer">
+            <p>Sí, realizamos envíos a todas las provincias con opciones de envío rápido.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question"><h3>¿Aceptan transferencia?</h3>
+            <i class="fas fa-chevron-down arrow"></i>
+        </button>
+        <div class="faq-answer">
+            <p>Si, aceptamos cualquier metodo de pago</p>
+        </div>
+    </div>
+     <script>
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    });
+});
+</script>
+</section>
+<section class="newsletter">
+        <h2 id="pier">¡No te pierdas nuestras ofertas!</h2>
+        <p id="sub">Suscríbete y recibe notificaciones de las mejores promociones</p>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirme</button>
+
+            
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Alangulo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("¡Gracias por suscribirte!");
+});
+    </script>
+
+</body>
+</html>
